@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLORSENSE</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* style for About Section */
+       
+        .image-link {
+            text-decoration: none; 
+            color: black; 
+            display: inline-block;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container {
+            position: relative; /* Position relative for text overlay */
+            width: 300px; /* Set desired width */
+            overflow: hidden; /* Hide overflow */
+            border-radius: 15px; /* Rounded corners */
+        }
+
+        .image {
+            width: 100%; 
+            height: auto; 
+            transition: transform 0.5s ease, box-shadow 0.5s ease; 
+        }
+
+        .image:hover {
+            transform: scale(1.1); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); 
+        }
+
+        .image-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7); 
+            color: white; 
+            padding: 10px; 
+            font-size: 16px; 
+            opacity: 0; 
+            transition: opacity 0.5s ease, transform 0.5s ease; 
+            transform: translateY(100%); 
+        }
+
+        .image-link:hover .image-text {
+            opacity: 1; 
+            transform: translateY(0);
+        }
+
+        .image-links-container {
+            display: flex;
+            justify-content: center; 
+            gap: 30px;
+            margin-top: 20px; 
+        }
+        .services-container {
+        text-align: center;
+        padding: 50px 20px;
+        background: linear-gradient(to bottom, #f0f8ff, #dceeff);
+        border-radius: 25px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        margin: 30px auto;
+        max-width: 800px;
+    }
+
+    /* services Heading Styling */
+    .services-heading {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0288d1;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #0288d1;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+   
+    /* About Container */
+    .about-container {
+        text-align: center;
+        padding: 30px 20px;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width:400px;
+    }
+
+    /* Rainbow Animation for Heading */
+    .rainbow-heading {
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        background-size: 300%;
+        background-clip: text;
+        background-clip: text;
+        background-clip: text;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+
+        -webkit-text-fill-color: transparent;
+        animation: rainbow-animation 3s linear infinite;
+        margin-bottom: 15px;
+    }
+   
+    @keyframes rainbow-animation {
+        0% {
+            background-position: 0%;
+        }
+        100% {
+            background-position: 100%;
+        }
+    }
+
+.rainbow-heading {
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        background-size: 300%;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rainbow-animation 3s linear infinite;
+        text-align: center;
+        margin-bottom: 20px;
+}
+
+    /* Keyframes for Rainbow Animation */
+@keyframes rainbow-animation {
+        0% {
+            background-position: 0%;
+        }
+        100% {
+            background-position: 100%;
+        }
+}
+
+.about-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 40px;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #ffffff, #f4f9fc);
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.about-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 30px;
+    flex: 1;
+    max-width: 500px;
+    min-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlight {
+    color: #0288d1;
+    font-weight: bold;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.card-icon img {
+    max-width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    text-align: center;
+    padding: 0 10px;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="splash-screen">
+        <h1><i>ColorSense</i></h1>
+        <p><i>Discover Colors from Your Emotions</i></p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="highlighted-div">
+        <h1><i>COLORSENSE</i></h1>
+    </div>
+    <hr>
+    <div id="mainContent" style="display: none;">
+        <div class="about-container">
+            <h2 class="rainbow-heading">About <i>ColorSense</i></h2>
+            <div class="about-cards">
+                <!-- About the Website -->
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="about-icon.webp" alt="About Icon">
+                    </div>
+                    <h3>Welcome to <span class="highlight"><i>ColorSense</i></span></h3>
+                    <p>
+                        <b>ColorSense</b> unlocks the world of colors, transforming ideas into vibrant realities. 
+                        Perfect for artists, designers, and curious minds, our platform helps you explore, analyze,
+                         and apply colors effortlessly. Detect precise shades, uncover emotion-inspired palettes,
+                         and create visually stunning designs. Dive into the magic of hues and let creativity shine!
+                    </p>
+                </div>
+        
+                <!-- How to Use -->
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="how-to-use-icon.png" alt="How to Use Icon">
+                    </div>
+                    <h3>How to Use</h3>
+                    <p>
+                        
+For <b>Color Detection</b>, upload an image and double-click on an area to detect its color. 
+Instantly view RGB/HEX values and Double-click any color box to copy its code.
+                    </p>
+                    <p>
+For <b>Recommendations</b>, input an emotion or RGB values to generate tailored color palettes. 
+Double-click any color box to copy its code. Explore and create with ease!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="services-container">
+            <h2 class="services-heading rainbow-heading">SERVICES</h2>
+            <div class="image-links-container">
+                <!-- Color Recommender -->
+                <div class="image-container">
+                    <a href="colorrecommendor.html" class="image-link">
+                        <img src="cr.webp" alt="Color Recommendor" class="image">
+                        <span class="image-text">Color Recommendor</span>
+                    </a>
+                </div>
+                <!-- Color Detection -->
+                <div class="image-container">
+                    <a href="colordetection2.html" class="image-link">
+                        <img src="cd.webp" alt="Color Detection" class="image">
+                        <span class="image-text">Color Detection</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">&copy; 2024 ColorSense - Inspiring Creativity Through Colors</div>
+
+    <script>
+        // Hide splash screen after 1 second
+        const splashScreen = document.getElementById("splashScreen");
+        const mainContent = document.getElementById("mainContent");
+    
+        setTimeout(() => {
+            splashScreen.style.opacity = 0;
+            setTimeout(() => {
+                splashScreen.style.display = "none";
+                mainContent.style.display = "block";
+            }, 500); 
+        }, 1000); 
+    </script>
+    
+    </script>
+</body>
+</html>

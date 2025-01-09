@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Detector</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+   /* Full-Page Centering */
+   .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vh; /* Adjust height as needed */
+    background: #f0f8ff; /* Light background color */
+    border: 2px solid #0288d1; /* Optional: Add a border for better visibility */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for depth */
+    padding: 18px; /* Add padding inside the container */
+}
+
+
+/* Centering the File Input */
+#imageInput {
+    display: block;
+    margin: 0 auto; /* Center the input horizontally */
+    padding: 8px 16px; /* Reduce padding for a compact size */
+    border: 2px solid #0288d1;
+    border-radius: 25px; /* Rounded edges for style */
+    font-size: 14px; /* Slightly smaller font size */
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #0288d1; /* Text color matches border */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+/* Hover Effect for Input */
+#imageInput:hover {
+    background-color: #0288d1;
+    color: white; /* Change text color to white */
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensify shadow */
+}
+
+/* Style the Choose File Button */
+input[type="file"]::-webkit-file-upload-button {
+    background: #0288d1;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 15px; /* Rounded edges for the button */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition effects */
+}
+
+/* Hover Effect for Choose File Button */
+input[type="file"]::-webkit-file-upload-button:hover {
+    background: white;
+    color: #0288d1; /* Revert to border color for contrast */
+    border: 2px solid #0288d1; /* Add a border on hover */
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+
+
+        /* Image Box Container */
+        #imageContainer {
+            border: 3px solid #0288d1;
+            border-radius: 15px;
+            padding: 10px;
+            margin-top: 20px;
+            width: 300px;
+            height: 300px;
+            display: none;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #imageContainer img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Output Boxes */
+        .output-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #0288d1;
+            border-radius: 15px;
+            background: white;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            position: relative;
+        }
+
+        .output-box:hover {
+            background: #0288d1;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .color-palette {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-top: 10px;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .output-box:hover .color-palette {
+            transform: rotate(360deg);
+        }
+
+        #outputContainer {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 20px 0;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        background-size: 400% 100%;
+        background-clip: text;
+        color: transparent;
+        animation: rainbowEffect 5s infinite linear;
+        text-decoration: underline;
+
+    }
+
+    @keyframes rainbowEffect {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class="highlighted-div">
+        <h1><i>COLORSENSE</i></h1>
+    </div>
+    <hr>
+    <h1>Color Detection</h1>
+    <div class="center-container">
+    <input type="file" id="imageInput" accept="image/*">
+</div>
+
+    
+    <div id="imageContainer">
+        <img id="uploadedImage" src="" alt="Uploaded Image">
+    </div>
+    <div id="outputContainer">
+        <div class="output-box" id="rgbOutput">
+            RGB: 
+            <div class="color-palette" id="rgbPalette"></div>
+        </div>
+        <div class="output-box" id="hexOutput">
+            HEX: 
+            <div class="color-palette" id="hexPalette"></div>
+        </div>
+    </div>
+
+    <div class="footer">&copy; 2024 ColorSense - Inspiring Creativity Through Colors</div>
+    
+
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const imageContainer = document.getElementById('imageContainer');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const rgbOutput = document.getElementById('rgbOutput');
+        const hexOutput = document.getElementById('hexOutput');
+        const rgbPalette = document.getElementById('rgbPalette');
+        const hexPalette = document.getElementById('hexPalette');
+
+        // Handle Image Upload
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage.src = e.target.result;
+                    imageContainer.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle Double-Click to Detect Color
+        uploadedImage.addEventListener('dblclick', function(event) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = uploadedImage.width;
+            canvas.height = uploadedImage.height;
+            context.drawImage(uploadedImage, 0, 0);
+
+            const rect = uploadedImage.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const pixel = context.getImageData(x, y, 1, 1).data;
+
+            const rgb = `(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+            const hex = `#${((1 << 24) + (pixel[0] << 16) + (pixel[1] << 8) + pixel[2]).toString(16).slice(1).toUpperCase()}`;
+
+            // Update RGB and HEX Outputs
+            rgbOutput.firstChild.textContent = `RGB: ${rgb}`;
+            hexOutput.firstChild.textContent = `HEX: ${hex}`;
+
+            // Update Palettes
+            rgbPalette.style.backgroundColor = `rgb${rgb}`;
+            hexPalette.style.backgroundColor = hex;
+
+            // Copy on Double Click
+            rgbOutput.addEventListener('dblclick', () => copyToClipboard(`RGB: ${rgb}`));
+            hexOutput.addEventListener('dblclick', () => copyToClipboard(`HEX: ${hex}`));
+        });
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                console.log('Copied to clipboard');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorSense - Color Recommendation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style> h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 20px 0;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        background-size: 400% 100%;
+        background-clip: text;
+        color: transparent;
+        animation: rainbowEffect 5s infinite linear;
+        text-decoration: underline;
+    }
+
+    @keyframes rainbowEffect {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    </style>
+  
+</head>
+<body>
+    <div class="highlighted-div">
+        <h1><i>COLORSENSE</i></h1>
+
+     
+    </div>
+    <hr>
+    <div class="container">
+        <h1> Color Recommendations</h1>
+        
+ <!-- Section for Emotion-based Color Recommendation -->
+ <div class="section">
+    <h2>Emotion-based Color Palette</h2>
+    <p>Enter an emotion to generate a corresponding color palette:</p>
+    <input type="text" id="emotionInput" placeholder="Type an emotion here...">
+    <button onclick="generateEmotionPalette()">Generate Palette</button>
+    <div class="palette" id="emotionPalette"></div>
+</div>
+
+<!-- Section for RGB-based Color Recommendation -->
+<div class="section">
+    <h2>RGB-based Color Palette</h2>
+    <p>Enter RGB values to find complementary and analogous colors:</p>
+    <input type="number" id="red" placeholder="Red (0-255)" min="0" max="255">
+    <input type="number" id="green" placeholder="Green (0-255)" min="0" max="255">
+    <input type="number" id="blue" placeholder="Blue (0-255)" min="0" max="255">
+    <button onclick="generateRGBPalette()">Generate Palette</button>
+    <div class="palette" id="rgbPalette"></div>
+</div>
+</div>
+
+    <div class="footer">&copy; 2024 ColorSense - Inspiring Creativity Through Colors</div>
+
+    <script>
+         // Function to generate emotion-based color palette
+         function generateEmotionPalette() {
+            const emotion = document.getElementById('emotionInput').value.toLowerCase();
+            const emotionPalette = document.getElementById('emotionPalette');
+            emotionPalette.innerHTML = '';
+
+            const emotionColors = {
+    happy: ['#FFD700', '#FF8C00', '#FFFFE0'],
+    calm: ['#ADD8E6', '#87CEEB', '#B0E0E6'],
+    energetic: ['#FF4500', '#DC143C', '#FF6347'],
+    love: ['#FF1493', '#FF69B4', '#DC143C'],
+    creative: ['#6A5ACD', '#8A2BE2', '#7B68EE'],
+    angry: ['#B22222', '#8B0000', '#FF0000'],
+    mad:['#B22222', '#8B0000', '#FF0000'],
+    peaceful: ['#98FB98', '#00FA9A', '#2E8B57'],
+    sad: ['#708090', '#778899', '#B0C4DE'],
+    excited: ['#FFA500', '#FF4500', '#FFD700'],
+    relaxed: ['#20B2AA', '#48D1CC', '#5F9EA0'],
+    nostalgic: ['#D2B48C', '#C5B358', '#A0522D'],
+    adventurous: ['#8B4513', '#A52A2A', '#D2691E'],
+    mysterious: ['#4B0082', '#6A5ACD', '#483D8B'],
+    confident: ['#FF4500', '#FF6347', '#FFD700'],
+    curious: ['#4682B4', '#5F9EA0', '#6495ED'],
+    shy: ['#FFC0CB', '#F4A460', '#FFE4E1'],
+    hopeful: ['#FFD700', '#FFFFE0', '#FFFAF0'],
+    fearful: ['#800000', '#8B0000', '#A52A2A'],
+    anxious: ['#708090', '#2F4F4F', '#778899'],
+    cheerful: ['#FF69B4', '#FFB6C1', '#FF1493'],
+    determined: ['#DC143C', '#8B0000', '#FF4500'],
+    playful: ['#FF7F50', '#FF4500', '#FFA07A'],
+    serene: ['#87CEEB', '#ADD8E6', '#B0E0E6'],
+    jealous: ['#32CD32', '#228B22', '#008000'],
+    surprised: ['#FFFF00', '#FFD700', '#FFA500'],
+    forgiving: ['#98FB98', '#90EE90', '#8FBC8F'],
+    lonely: ['#A9A9A9', '#C0C0C0', '#778899'],
+    warm: ['#FFA07A', '#FF6347', '#FF4500'],
+    cold: ['#B0E0E6', '#4682B4', '#5F9EA0'],
+    grateful: ['#FFD700', '#FFA500', '#FF8C00'],
+    inspired: ['#7B68EE', '#6A5ACD', '#483D8B'],
+    victorious: ['#FFD700', '#DAA520', '#FF6347'],
+    grieving: ['#696969', '#A9A9A9', '#708090'],
+    loyal: ['#4682B4', '#4169E1', '#1E90FF'],
+    powerful: ['#8B0000', '#FF4500', '#B22222'],
+    embarrassed: ['#FFC0CB', '#FF69B4', '#FFA07A'],
+    festive: ['#FF0000', '#FFA500', '#FFD700'],
+    bold: ['#DC143C', '#FF4500', '#FF6347'],
+    grateful: ['#FFD700', '#FFFFE0', '#FFA500'],
+    dreamy: ['#B0E0E6', '#87CEEB', '#ADD8E6'],
+    healing: ['#32CD32', '#00FA9A', '#98FB98'],
+    optimistic: ['#FFD700', '#FFA500', '#FF8C00'],
+    elegant: ['#6A5ACD', '#483D8B', '#4B0082'],
+    passionate: ['#FF0000', '#DC143C', '#B22222'],
+    trustworthy: ['#4169E1', '#4682B4', '#1E90FF'],
+    festive: ['#FF4500', '#FFA500', '#FFD700'],
+    resilient: ['#8B4513', '#D2691E', '#A52A2A'],
+    harmonious: ['#32CD32', '#00FA9A', '#ADFF2F'],
+    victorious: ['#FFD700', '#DAA520', '#FFA500'],
+    grounded: ['#8B4513', '#A0522D', '#CD853F'],
+    whimsical: ['#FF69B4', '#FFD700', '#FFA07A'],
+    adventurous: ['#A52A2A', '#8B4513', '#D2691E'],
+    magical: ['#8A2BE2', '#9400D3', '#9932CC'],
+    neutral: ['#C0C0C0', '#A9A9A9', '#778899'],
+    cautious: ['#DAA520', '#CD853F', '#D2691E'],
+    freedom: ['#4682B4', '#6495ED', '#4169E1'],
+    meditative: ['#6A5ACD', '#7B68EE', '#483D8B'],
+    reverent: ['#FFD700', '#DAA520', '#8B4513'],
+    satisfied: ['#FFA07A', '#FF6347', '#FFD700'],
+    humble: ['#CD853F', '#D2B48C', '#A0522D'],
+    daring: ['#FF4500', '#DC143C', '#B22222'],
+    vibrant: ['#FFD700', '#FF6347', '#FFA500'],
+    envious: ['#228B22', '#006400', '#008000'],
+    patient: ['#32CD32', '#00FA9A', '#90EE90'],
+    majestic: ['#4B0082', '#6A5ACD', '#483D8B'],
+    mysterious: ['#2E2E2E', '#4B0082', '#483D8B'],
+    wistful: ['#C0C0C0', '#A9A9A9', '#D3D3D3'],
+    sorrowful: ['#708090', '#778899', '#2F4F4F'],
+    jubilant: ['#FFA500', '#FFD700', '#FF4500'],
+    reflective: ['#5F9EA0', '#4682B4', '#87CEEB'],
+    resolute: ['#FF4500', '#DC143C', '#B22222'],
+    nostalgic: ['#D2B48C', '#A0522D', '#8B4513'],
+    tranquil: ['#ADD8E6', '#87CEEB', '#B0E0E6'],
+    overwhelmed: ['#696969', '#808080', '#A9A9A9'],
+    motivated: ['#FF7F50', '#FFA07A', '#FFD700'],
+    thankful: ['#FFD700', '#FFA500', '#FF6347'],
+    daring: ['#FF4500', '#FF0000', '#8B0000'],
+    melancholy: ['#2F4F4F', '#696969', '#778899'],
+    flustered: ['#FF69B4', '#FF1493', '#FFA07A'],
+    enchanted: ['#9400D3', '#9932CC', '#BA55D3'],
+    lively: ['#FF4500', '#FFD700', '#FFA500'],
+    bashful: ['#FFC0CB', '#FFDAB9', '#FFE4E1'],
+    tender: ['#FFB6C1', '#FFC0CB', '#FF69B4'],
+    dynamic: ['#DC143C', '#FF4500', '#FF7F50'],
+    nurturing: ['#32CD32', '#98FB98', '#ADFF2F'],
+    poised: ['#4682B4', '#6495ED', '#87CEEB'],
+    rejuvenated: ['#48D1CC', '#00FA9A', '#40E0D0'],
+    cheerful: ['#FFD700', '#FF8C00', '#FFA07A'],
+    warmhearted: ['#FF6347', '#FF4500', '#FFD700'],
+    bashful: ['#FFE4E1', '#FFC0CB', '#FFB6C1'],
+    luminous: ['#FFFACD', '#FFD700', '#FAFAD2'],
+    regal: ['#6A5ACD', '#4B0082', '#483D8B'],
+    jubilant: ['#FFA500', '#FFD700', '#FFFF00'],
+    contemplative: ['#B0C4DE', '#778899', '#4682B4'],
+    empathetic: ['#FFC0CB', '#FFE4E1', '#FFDAB9'],
+    enchanted: ['#BA55D3', '#9400D3', '#9932CC'],
+    longing: ['#B0C4DE', '#708090', '#778899'],
+    festive: ['#FF4500', '#FFA500', '#FFD700'],
+    inspired: ['#6A5ACD', '#7B68EE', '#4682B4'],
+    sorrowful: ['#2F4F4F', '#708090', '#696969'],
+    mellow: ['#FFE4B5', '#FFDAB9', '#FFF8DC'],
+    earthy: ['#8B4513', '#A0522D', '#CD853F'],
+    radiant: ['#FFD700', '#FFA500', '#FFFACD'],
+    connected: ['#32CD32', '#ADFF2F', '#7CFC00'],
+    playful: ['#FF69B4', '#FF7F50', '#FF6347'],
+    trusting: ['#1E90FF', '#4682B4', '#6495ED'],
+    serene: ['#ADD8E6', '#B0E0E6', '#87CEEB'],
+    grounded: ['#8B4513', '#A0522D', '#CD853F'],
+    glowing: ['#FFD700', '#FFFAF0', '#FFFACD'],
+    luxurious: ['#4B0082', '#6A5ACD', '#7B68EE'],
+    lust:['#8B0000','#DC143C','#800020']
+    
+};
+
+
+            const colors = emotionColors[emotion] || ['#CCCCCC'];
+
+            colors.forEach(color => {
+                const box = document.createElement('div');
+                box.className = 'color-box';
+                box.style.backgroundColor = color;
+                box.dataset.color = color;
+                box.addEventListener('dblclick', () => copyToClipboard(color));
+                emotionPalette.appendChild(box);
+            });
+        }
+
+        // Function to generate RGB-based color palette
+        function generateRGBPalette() {
+            const red = parseInt(document.getElementById('red').value) || 0;
+            const green = parseInt(document.getElementById('green').value) || 0;
+            const blue = parseInt(document.getElementById('blue').value) || 0;
+            const rgbPalette = document.getElementById('rgbPalette');
+            rgbPalette.innerHTML = '';
+
+            const complementary = `rgb(${255 - red}, ${255 - green}, ${255 - blue})`;
+            const analogous1 = `rgb(${(red + 30) % 255}, ${(green + 30) % 255}, ${(blue + 30) % 255})`;
+            const analogous2 = `rgb(${(red + 60) % 255}, ${(green + 60) % 255}, ${(blue + 60) % 255})`;
+
+            [complementary, analogous1, analogous2].forEach(color => {
+                const box = document.createElement('div');
+                box.className = 'color-box';
+                box.style.backgroundColor = color;
+                box.dataset.color = color;
+                box.addEventListener('dblclick', () => copyToClipboard(color));
+                rgbPalette.appendChild(box);
+            });
+        }
+
+        // Copy to Clipboard Function
+        function copyToClipboard(color) {
+            navigator.clipboard.writeText(color).then(() => {
+                alert(`Copied to clipboard: ${color}`);
+            });
+        }
+    </script>
+</body>
+</html>
