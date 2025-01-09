@@ -1,0 +1,347 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(backimage2.jpg);
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+    color: #000000; /* Dark text color */
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Splash Screen Styles */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FF5733, #FFBD33, #75FF33, #33FF57, #33FFBD, #3357FF, #5733FF, #FF33A1); /* Rainbow gradient */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s ease;
+    z-index: 1000; /* Ensure it is on top */
+}
+
+.splash-screen h1 {
+    font-family: cursive;
+    font-size: 8.5em;
+    color: #ffffff; /* White text */
+    margin: 0;
+    font-weight: 900;
+}
+
+.splash-screen p {
+    font-size: 4.5em;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+/* Headings */
+
+.highlighted-div {
+    border: 5px solid #33daff; /* Adds a border to make the div stand out */
+    border-radius: 20px; /* Adds rounded corners */
+    padding: 30px; /* Adds spacing inside the div */
+    width: 80%; /* Makes the div take up less space */
+    margin: 60px auto; /* Centers the div on the page */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a 3D effect */
+    text-align: center; /* Centers the content inside the div */
+    background-image: url(backimage3.avif);
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+h1 {
+    font-family: cursive;
+    font-size: 6.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white; /* Makes the text itself transparent to show gradient */
+    font-weight: 700;
+}
+
+hr {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 5px;
+    border-color: #33daff; /* Aqua color matching the design */
+    width: 80%; /* Reduces the length for a more compact look */
+    border-radius: 10px; /* Adds rounded edges for a modern touch */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds subtle depth with shadow */
+}
+
+h2 {
+    color: #000000; /* Dark text color */
+    font-size: 1.8em;
+    margin: 20px 0 10px;
+}
+
+/* Input Styles */
+input[type="file"],
+input[type="text"],
+button {
+    margin: 10px 0;
+    padding: 15px;
+    border: 2px solid #FF5733; /* Rainbow color */
+    border-radius: 5px;
+    background-color: #f0f0f0; /* Light input background */
+    color: #000000; /* Dark text color */
+    font-size: 1em;
+    transition: all 0.3s ease;
+    width: calc(100% - 24px);
+}
+
+input[type="file"]:hover,
+input[type="text"]:hover,
+button:hover {
+    border-color: #000000; /* Change border color on hover */
+    background-color: #e0e0e0; /* Slightly darker background */
+}
+
+/* Canvas Styles */
+#imageCanvas {
+    border: 2px solid #FF5733; /* Rainbow color */
+    border-radius: 5px;
+    cursor: crosshair;
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+}
+
+/* Color Info Styles */
+.color-info {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Palette Styles */
+.palette {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.palette div {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    border: 2px solid #000000; /* Dark border for palette colors */
+}
+
+
+.section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.section input, .section button, .section select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.section button {
+    background: linear-gradient(90deg, #84fab0, #8fd3f4);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.section button:hover {
+    opacity: 0.9;
+}
+
+.palette {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.color-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.footer {
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    background-color: #f0f8ff; 
+    padding: 10px 0; 
+    font-size: 14px;
+    text-align: center;
+    color: #666; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+    z-index: 10; 
+}
+
+.highlighted-div h1 {
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
+    background-clip: text;
+    color: transparent;
+}
+
+.container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 80%;
+    max-width: 700px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+input, button {
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
+    background-color: #0288d1;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0277bd;
+}
+
+.palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.color-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.color-box::after {
+    content: attr(data-color);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+}
+.rainbow-heading {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 300%;
+    background-clip: text;
+    background-clip: text;
+    background-clip: text;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-animation 3s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes rainbow-animation {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
